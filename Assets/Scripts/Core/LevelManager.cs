@@ -16,7 +16,7 @@ public class LevelManager : MonoBehaviour
 
 
     TileMapVisualizer tileMapVisualizer = new TileMapVisualizer();
-    
+
 
     Player player;
     HexSelector selector;
@@ -27,6 +27,8 @@ public class LevelManager : MonoBehaviour
     {
         GameObject Player = new GameObject("Player");
         player = Player.AddComponent<Player>();
+        player.gameObject.AddComponent<Rigidbody2D>();
+        player.gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
 
         tileMapVisualizer.populateGrid(map, tile, 0.05F, 100, 100);
 
@@ -41,7 +43,7 @@ public class LevelManager : MonoBehaviour
         camera.orthographic = true;
         camera.nearClipPlane = 0.0F;
 
-        
+
         GameObject HexSelector = new GameObject("HexSelector");
         selector = HexSelector.AddComponent<HexSelector>();
     }
@@ -49,6 +51,7 @@ public class LevelManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }
+
